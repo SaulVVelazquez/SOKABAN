@@ -35,7 +35,7 @@ class Sokoban:
             
     def moverDerecha(self):
         print("Mover Derecha")
-    #5 personaje,espacio 0,1 -> 1,0
+      #5 personaje,espacio 0,1 -> 1,0
         if (self.mapa[self.personaje_fila][self.personaje_columna]== 0 and self.mapa[self.personaje_fila][self.personaje_columna + 1]== 1):
             self.mapa[self.personaje_fila][self.personaje_columna]= 1
             self.mapa[self.personaje_fila][self.personaje_columna + 1]= 0
@@ -199,7 +199,8 @@ class Sokoban:
           self.mapa [self.personaje_fila][self.personaje_columna]=  4  
           self.mapa[self.personaje_fila][self.personaje_columna -1]=5
           self.mapa[self.personaje_fila][self.personaje_columna -2 ]=6
-          self.personaje_columna     -=1      
+          self.personaje_columna     -=1  
+          print("personaje_meta,caja_meta,espacio")  
     def moverArriba(self):     
         print("Mover arriba")
      #29 espacio ,personaje
@@ -385,7 +386,10 @@ class Sokoban:
                 
 juego = Sokoban()
 juego.jugar()
-
+            
+        
+            
+          
           
             
    
