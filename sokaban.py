@@ -5,7 +5,7 @@ class Sokoban:
     2_caja
     3_pared
     4_metas
-    5-persoaje_meta
+    5-personaje_meta
     6_caja_meta
     """
   
@@ -19,7 +19,7 @@ class Sokoban:
         self.mapa=[
             [3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3,3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,3],
+            [3, 1, 1, 1, 1, 1, 4, 1, 1, 1,1,3],
             [3, 1, 4, 1, 1, 1, 0, 2, 4, 1,1,3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,3],
             [3, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,3],
@@ -204,83 +204,83 @@ class Sokoban:
     def moverArriba(self):     
         print("Mover arriba")
      #29 espacio ,personaje
-        if (self.mapa[self.personaje_fila][self.personaje_columna]== 1 and self.mapa[self.personaje_fila -1 ][self.personaje_columna ]== 0):
-            self.mapa[self.personaje_fila][self.personaje_columna]= 0
-            self.mapa[self.personaje_fila - 1 ][self.personaje_columna]= 1
+        if (self.mapa[self.personaje_fila -1][self.personaje_columna]== 1 and self.mapa[self.personaje_fila][self.personaje_columna ]== 0):
+            self.mapa[self.personaje_fila -1][self.personaje_columna]= 0
+            self.mapa[self.personaje_fila][self.personaje_columna]= 1
             self.personaje_fila -= 1
             print("espacio ,personaje")
     #30 meta,personaje
-        if (self.mapa[self.personaje_fila][self.personaje_columna]== 4 and self.mapa[self.personaje_fila -1 ][self.personaje_columna ]== 0):
-            self.mapa[self.personaje_fila][self.personaje_columna]= 5
-            self.mapa[self.personaje_fila - 1 ][self.personaje_columna]= 1
+        elif(self.mapa[self.personaje_fila -1][self.personaje_columna]== 4 and self.mapa[self.personaje_fila][self.personaje_columna ]== 0):
+            self.mapa[self.personaje_fila -1][self.personaje_columna]= 5
+            self.mapa[self.personaje_fila][self.personaje_columna]= 1
             self.personaje_fila -= 1
             print("meta,personaje") 
      #31 espacio,caja,personaje    
-        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 1 and self.mapa[self.personaje_fila -1][self.personaje_columna]==2  and self.mapa [self.personaje_fila -1][self.personaje_columna]== 0):
+        elif(self.mapa[self.personaje_fila -2][self.personaje_columna]== 1 and self.mapa[self.personaje_fila -1][self.personaje_columna]==2  and self.mapa [self.personaje_fila][self.personaje_columna]== 0):
           self.mapa [self.personaje_fila][self.personaje_columna]=  2  
           self.mapa[self.personaje_fila -1][self.personaje_columna ]=0
           self.mapa[self.personaje_fila -2 ][self.personaje_columna]=1
           self.personaje_fila     -=1 
           print("espacio,caja,personaje") 
      #32 meta,caja,personaje     
-        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 4 and self.mapa[self.personaje_fila -1][self.personaje_columna]==2  and self.mapa [self.personaje_fila -1][self.personaje_columna]== 0):
+        elif(self.mapa[self.personaje_fila -2][self.personaje_columna]== 4 and self.mapa[self.personaje_fila -1][self.personaje_columna]==2  and self.mapa [self.personaje_fila][self.personaje_columna]== 0):
           self.mapa [self.personaje_fila][self.personaje_columna]=  6  
           self.mapa[self.personaje_fila -1][self.personaje_columna ]=0
           self.mapa[self.personaje_fila -2 ][self.personaje_columna]=1
           self.personaje_fila     -=1 
           print("meta,caja,personaje")
      #33 espacio,caja_meta,personaje       
-        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 1 and self.mapa[self.personaje_fila -1][self.personaje_columna]==6  and self.mapa [self.personaje_fila -1][self.personaje_columna]== 0):
-          self.mapa [self.personaje_fila][self.personaje_columna]=  2  
+        elif(self.mapa[self.personaje_fila -2][self.personaje_columna]== 1 and self.mapa[self.personaje_fila -1][self.personaje_columna]==6  and self.mapa [self.personaje_fila][self.personaje_columna]== 0):
+          self.mapa [self.personaje_fila -2][self.personaje_columna]=  2  
           self.mapa[self.personaje_fila -1][self.personaje_columna ]=5
-          self.mapa[self.personaje_fila -2 ][self.personaje_columna]=1
+          self.mapa[self.personaje_fila][self.personaje_columna]=1
           self.personaje_fila     -=1 
           print("espacio,caja_meta,personaje")   
      #34 meta,caja_meta,personaje
-        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 4 and self.mapa[self.personaje_fila -1][self.personaje_columna]==6  and self.mapa [self.personaje_fila -1][self.personaje_columna]== 0):
-          self.mapa [self.personaje_fila][self.personaje_columna]=  6  
-          self.mapa[self.personaje_fila -1][self.personaje_columna ]=0
-          self.mapa[self.personaje_fila -2 ][self.personaje_columna]=1
+        elif(self.mapa[self.personaje_fila -2][self.personaje_columna]== 4 and self.mapa[self.personaje_fila -1][self.personaje_columna]==6  and self.mapa [self.personaje_fila][self.personaje_columna]== 0):
+          self.mapa [self.personaje_fila -2][self.personaje_columna]=  6  
+          self.mapa[self.personaje_fila -1][self.personaje_columna ]=5
+          self.mapa[self.personaje_fila][self.personaje_columna]=1
           self.personaje_fila     -=1 
           print("meta,caja_meta,personaje")        
     #35  espacio,personaje_meta
-        if (self.mapa[self.personaje_fila][self.personaje_columna]== 1 and self.mapa[self.personaje_fila -1 ][self.personaje_columna ]== 5):
-            self.mapa[self.personaje_fila][self.personaje_columna]= 0
-            self.mapa[self.personaje_fila -1][self.personaje_columna]= 4
+        elif(self.mapa[self.personaje_fila -1][self.personaje_columna]== 1 and self.mapa[self.personaje_fila][self.personaje_columna ]== 5):
+            self.mapa[self.personaje_fila][self.personaje_columna]= 4
+            self.mapa[self.personaje_fila -1][self.personaje_columna]= 0
             self.personaje_fila -= 1
             print("espacio,personaje_meta")   
     #36 meta,personaje_meta
-        if (self.mapa[self.personaje_fila][self.personaje_columna]== 4 and self.mapa[self.personaje_fila -1 ][self.personaje_columna ]== 5):
-            self.mapa[self.personaje_fila][self.personaje_columna]= 5
-            self.mapa[self.personaje_fila - 1 ][self.personaje_columna]= 4
+        elif(self.mapa[self.personaje_fila -1][self.personaje_columna]== 4 and self.mapa[self.personaje_fila][self.personaje_columna ]== 5):
+            self.mapa[self.personaje_fila][self.personaje_columna]= 4
+            self.mapa[self.personaje_fila - 1 ][self.personaje_columna]= 5
             self.personaje_fila -= 1
             print("meta,personaje_meta")    
     #37 espacio,caja,personaje_meta
-        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 1 and self.mapa[self.personaje_fila -1][self.personaje_columna]==2  and self.mapa [self.personaje_fila -1][self.personaje_columna]== 5):
-          self.mapa [self.personaje_fila][self.personaje_columna]=  2  
+        elif(self.mapa[self.personaje_fila -2][self.personaje_columna]== 1 and self.mapa[self.personaje_fila -1][self.personaje_columna]==2  and self.mapa [self.personaje_fila][self.personaje_columna]== 5):
+          self.mapa [self.personaje_fila -2][self.personaje_columna]=  2  
           self.mapa[self.personaje_fila -1][self.personaje_columna ]=0
-          self.mapa[self.personaje_fila -2 ][self.personaje_columna]=4
+          self.mapa[self.personaje_fila][self.personaje_columna]=4
           self.personaje_fila     -=1 
           print("espacio,caja,personaje_meta")    
     #38 meta,caja,personaje_meta
-        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 4 and self.mapa[self.personaje_fila -1][self.personaje_columna]==2  and self.mapa [self.personaje_fila -1][self.personaje_columna]== 5):
-          self.mapa [self.personaje_fila][self.personaje_columna]=  6  
+        elif(self.mapa[self.personaje_fila -2][self.personaje_columna]== 4 and self.mapa[self.personaje_fila -1][self.personaje_columna]==2  and self.mapa [self.personaje_fila][self.personaje_columna]== 5):
+          self.mapa [self.personaje_fila -2][self.personaje_columna]=  6  
           self.mapa[self.personaje_fila -1][self.personaje_columna ]=0
-          self.mapa[self.personaje_fila -2 ][self.personaje_columna]=4
+          self.mapa[self.personaje_fila][self.personaje_columna]=4
           self.personaje_fila     -=1 
           print("meta,caja,personaje_meta")   
     #39 espacio ,caja_meta,personaje_meta
-        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 1 and self.mapa[self.personaje_fila -1][self.personaje_columna]==6  and self.mapa [self.personaje_fila -1][self.personaje_columna]== 5):
-          self.mapa [self.personaje_fila][self.personaje_columna]=  2  
+        elif(self.mapa[self.personaje_fila -2][self.personaje_columna]== 1 and self.mapa[self.personaje_fila -1][self.personaje_columna]==6  and self.mapa [self.personaje_fila][self.personaje_columna]== 5):
+          self.mapa [self.personaje_fila -2][self.personaje_columna]=  2  
           self.mapa[self.personaje_fila -1][self.personaje_columna ]=5
-          self.mapa[self.personaje_fila -2 ][self.personaje_columna]=4
+          self.mapa[self.personaje_fila][self.personaje_columna]=4
           self.personaje_fila     -=1 
           print("espacio ,caja_meta,personaje_meta")  
     #40 meta,caja_meta,personaje_meta
-        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 4 and self.mapa[self.personaje_fila -1][self.personaje_columna]==6  and self.mapa [self.personaje_fila -1][self.personaje_columna]== 5):
-          self.mapa [self.personaje_fila][self.personaje_columna]=  6  
+        elif(self.mapa[self.personaje_fila -2][self.personaje_columna]== 4 and self.mapa[self.personaje_fila -1][self.personaje_columna]==6  and self.mapa [self.personaje_fila][self.personaje_columna]== 5):
+          self.mapa [self.personaje_fila -2][self.personaje_columna]=  6  
           self.mapa[self.personaje_fila -1][self.personaje_columna ]=5
-          self.mapa[self.personaje_fila -2 ][self.personaje_columna]=4
+          self.mapa[self.personaje_fila][self.personaje_columna]=4
           self.personaje_fila     -=1 
           print("meta,caja_meta,personaje_meta")    
     def moverAbajo(self):
@@ -292,7 +292,7 @@ class Sokoban:
             self.personaje_fila += 1
             print("personaje,espacio") 
       #42 personaje,meta
-        if (self.mapa[self.personaje_fila][self.personaje_columna]== 0 and self.mapa[self.personaje_fila +1 ][self.personaje_columna ]== 4):
+        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 0 and self.mapa[self.personaje_fila +1 ][self.personaje_columna ]== 4):
             self.mapa[self.personaje_fila][self.personaje_columna]= 1
             self.mapa[self.personaje_fila + 1 ][self.personaje_columna]= 5
             self.personaje_fila += 1
