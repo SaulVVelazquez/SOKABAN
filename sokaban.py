@@ -1,3 +1,4 @@
+from os import system, name
 class Sokoban:
     """
     0_personaje
@@ -10,29 +11,30 @@ class Sokoban:
     """
   
     mapa=[]
-    
+    nivel=open("nivel 1.SV", "r")
 
-    personaje_fila= 3
-    personaje_columna= 6
+    personaje_fila= 1
+    personaje_columna= 1
     
     def leerMapa(self):
-        self.mapa=[
-            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3,3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,3],
-            [3, 1, 1, 1, 1, 1, 4, 1, 1, 1,1,3],
-            [3, 1, 4, 1, 1, 1, 0, 2, 4, 1,1,3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,3],
-            [3, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,3],
-            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3,3],
-        ]
+        for  row in self.nivel:
+            linea = []
+            for digito in row:
+                if digito == "\n":
+                    continue
+                linea.append(int(digito))
+            self.mapa.append(linea)
 
-
-        
     def imprimirMapa(self):
         for fila in self.mapa:
             print(fila)
-            
+
+    def borrarS(self): #borra pantalla
+        if name == 'nt':
+            system("cls")
+        else:
+            system("clear")
+
     def moverDerecha(self):
         print("Mover Derecha")
       #5 personaje,espacio 0,1 -> 1,0
