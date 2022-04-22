@@ -27,8 +27,22 @@ class Sokoban:
 
     def imprimirMapa(self):
         for fila in self.mapa:
-            print(fila)
-
+            for  i in fila:
+                if i==0:
+                    print("🙂", end="")
+                elif i==1:
+                    print("  ",end="")
+                elif i==2:
+                    print("🎁",end="")
+                elif i==3:
+                    print("🖼",end=" ")
+                elif i==4:
+                    print("🎈",end="")
+                elif i==5:
+                    print("😎",end="")
+                elif i==6:
+                    print("🎡",end="")
+            print()    
     def borrarS(self): #borra pantalla
         if name == 'nt':
             system("cls")
