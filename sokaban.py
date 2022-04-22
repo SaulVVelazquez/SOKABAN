@@ -371,17 +371,25 @@ class Sokoban:
         instrucciones="a-izquierda\nd-derecha\nw-arriba\ns-abajo"
         print(instrucciones)
         self.leerMapa()
+        self.imprimirMapa()
         while True:
-            self.imprimirMapa()
             movimiento = input("Mover Hacia: ")
             if movimiento == "d":
                 self.moverDerecha()
+                self.borrarS()
+                self.imprimirMapa()
             elif movimiento == "a":
                 self.moverIzquierda()
+                self.borrarS()
+                self.imprimirMapa()
             elif movimiento == "w":
                 self.moverArriba()
+                self.borrarS()
+                self.imprimirMapa()
             elif movimiento == "s":
                 self.moverAbajo()
+                self.borrarS()
+                self.imprimirMapa()
             elif movimiento == "q":
               print("salir del juego")
               break
