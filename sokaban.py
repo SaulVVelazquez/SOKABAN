@@ -26,6 +26,7 @@ class Sokoban:
             self.mapa.append(linea)
 
     def imprimirMapa(self):
+        fin = False
         for fila in self.mapa:
             for  i in fila:
                 if i==0:
@@ -42,7 +43,9 @@ class Sokoban:
                     print("😎",end="")
                 elif i==6:
                     print("🎡",end="")
+                    fin = True
             print()    
+        return fin
     def borrarS(self): #borra pantalla
         if name == 'nt':
             system("cls")
@@ -391,23 +394,23 @@ class Sokoban:
             movimiento = input("Mover Hacia: ")
             if movimiento == "d":
                 self.moverDerecha()
-                self.borrarS()
-                self.imprimirMapa()
             elif movimiento == "a":
                 self.moverIzquierda()
-                self.borrarS()
-                self.imprimirMapa()
             elif movimiento == "w":
                 self.moverArriba()
-                self.borrarS()
-                self.imprimirMapa()
             elif movimiento == "s":
                 self.moverAbajo()
-                self.borrarS()
-                self.imprimirMapa()
             elif movimiento == "q":
               print("salir del juego")
               break
+            else: 
+              pass
+            self.borrarS()
+            fin = self.imprimirMapa()
+            if fin:
+              print("Has completado el nivel!!")
+              
+
                 
 juego = Sokoban()
 juego.jugar()
