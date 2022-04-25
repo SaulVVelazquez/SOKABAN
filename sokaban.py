@@ -24,40 +24,34 @@ class Sokoban:
                     continue
                 linea.append(int(digito))
             self.mapa.append(linea)
-    count = 0
-    terminado = False    
+
     def imprimirMapa(self):
-        count+=1
-        if i==0:
-            for fila in self.mapa:
-                  for  i in fila:
-                      if i==0:
-                          print("🙂", end="")
-                      elif i==1:
-                          print("  ",end="")
-                      elif i==2:
-                          print("🎁",end="")
-                      elif i==3:
-                          print("🖼",end=" ")
-                      elif i==4:
-                          print("🎈",end="")
-                      elif i==5:
-                          print("😎",end="")
-                      elif i==6:
-                          print("🎡",end="")
-                      elif count ==1:
-                          terminando = True
-                      else:
-                          terminado = False 
-                          print()    
-                          
+        fin = False
+        for fila in self.mapa:
+            for  i in fila:
+                if i==0:
+                    print("🙂", end="")
+                elif i==1:
+                    print("  ",end="")
+                elif i==2:
+                    print("🎁",end="")
+                elif i==3:
+                    print("🖼",end=" ")
+                elif i==4:
+                    print("🎈",end="")
+                elif i==5:
+                    print("😎",end="")
+                elif i==6:
+                    print("🎡",end="")
+                    fin = True
+            print()    
+        return fin
     def borrarS(self): #borra pantalla
         if name == 'nt':
             system("cls")
         else:
             system("clear")
 
-    
     def moverDerecha(self):
         print("Mover Derecha")
       #5 personaje,espacio 0,1 -> 1,0
@@ -142,6 +136,8 @@ class Sokoban:
           self.personaje_columna     +=1     
           print("personaje_meta,caja_meta,meta")   
           
+      
+            
     def moverIzquierda(self):
         print("Mover izquierda")
     #17 personaje, espacio 
@@ -395,28 +391,26 @@ class Sokoban:
         self.leerMapa()
         self.imprimirMapa()
         while True:
-            if self.terminado == True:
-                print("Terminado")
             movimiento = input("Mover Hacia: ")
             if movimiento == "d":
                 self.moverDerecha()
-                self.borrarS()
-                self.imprimirMapa()
             elif movimiento == "a":
                 self.moverIzquierda()
-                self.borrarS()
-                self.imprimirMapa()
             elif movimiento == "w":
                 self.moverArriba()
-                self.borrarS()
-                self.imprimirMapa()
             elif movimiento == "s":
                 self.moverAbajo()
-                self.borrarS()
-                self.imprimirMapa()
             elif movimiento == "q":
               print("salir del juego")
               break
+            else: 
+              pass
+            self.borrarS()
+            fin = self.imprimirMapa()
+            if fin:
+              print("Has completado el nivel!!")
+              
+
                 
 juego = Sokoban()
 juego.jugar()
