@@ -1,4 +1,5 @@
 from os import system, name
+from time import sleep
 class Sokoban:
     """
     0_personaje
@@ -11,12 +12,15 @@ class Sokoban:
     """
   
     mapa=[]
-    nivel=open("nivel 1.SV", "r")
-
     personaje_fila= 1
     personaje_columna= 1
     
-    def leerMapa(self):
+    def leerMapa(self,lvl):
+        if lvl == 1:
+          self.nivel=open("nivel 1.SV", "r")
+        else:
+          self.nivel=open("nivel 2.SV", "r")
+        self.mapa = []
         for  row in self.nivel:
             linea = []
             for digito in row:
@@ -388,27 +392,36 @@ class Sokoban:
     def jugar(self):
         instrucciones="a-izquierda\nd-derecha\nw-arriba\ns-abajo"
         print(instrucciones)
-        self.leerMapa()
-        self.imprimirMapa()
+        lvl = 1
         while True:
-            movimiento = input("Mover Hacia: ")
-            if movimiento == "d":
-                self.moverDerecha()
-            elif movimiento == "a":
-                self.moverIzquierda()
-            elif movimiento == "w":
-                self.moverArriba()
-            elif movimiento == "s":
-                self.moverAbajo()
-            elif movimiento == "q":
-              print("salir del juego")
-              break
-            else: 
-              pass
-            self.borrarS()
-            fin = self.imprimirMapa()
-            if fin:
-              print("Has completado el nivel!!!")
+          print(f"\nNivel {lvl}")
+          self.leerMapa(lvl)
+          self.imprimirMapa()
+          while True:
+              movimiento = input("Mover Hacia: ")
+              if movimiento == "d":
+                  self.moverDerecha()
+              elif movimiento == "a":
+                  self.moverIzquierda()
+              elif movimiento == "w":
+                  self.moverArriba()
+              elif movimiento == "s":
+                  self.moverAbajo()
+              elif movimiento == "q":
+                print("salir del juego")
+                break
+              else: 
+                pass
+              self.borrarS()
+              fin = self.imprimirMapa()
+              if fin:
+                print("Has completado el nivel!!!")
+                print("SIGUIENTE NIVEL")
+                lvl = 2
+                # espera 3 segundos para cambiar de nivel
+                sleep(3)
+                self.borrarS()
+                break
               
 
                 
