@@ -408,7 +408,7 @@ class Sokoban:
             self.borrarS()
             fin = self.imprimirMapa()
             if fin:
-              print("Has completado el nivel!!")
+              print("Has completado el nivel!!!")
               
 
                 
