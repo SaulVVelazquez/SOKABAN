@@ -48,6 +48,11 @@ class Sokoban:
                 elif i==6:
                     print("🎡",end="")
                     fin = True
+                elif i==7:
+                    print("💰",end="")
+                elif i==8:
+                    print("😱",end="")
+                    fin = True
             print()    
         return fin
     def borrarS(self): #borra pantalla
@@ -70,6 +75,13 @@ class Sokoban:
             self.mapa[self.personaje_fila][self.personaje_columna + 1] = 5
             self.personaje_columna += 1
             print("personaje,meta")
+    # 6.2 personaje, meta 2
+        elif (self.mapa[self.personaje_fila][self.personaje_columna] == 0 and self.mapa[self.personaje_fila][self.personaje_columna + 1] == 7):
+            self.mapa[self.personaje_fila][self.personaje_columna] = 1
+            self.mapa[self.personaje_fila][self.personaje_columna + 1] = 8
+            self.personaje_columna += 1
+            print("personaje,meta2")
+
     #7 personaje,caja,espacio
         elif (self.mapa[self.personaje_fila][self.personaje_columna] == 0 and self.mapa[self.personaje_fila][self.personaje_columna + 1] ==2 and self.mapa [self.personaje_fila][self.personaje_columna +2 ]==1):
            self.mapa[self.personaje_fila][self.personaje_columna]= 1 
@@ -156,6 +168,11 @@ class Sokoban:
             self.mapa[self.personaje_fila][self.personaje_columna - 1]=5
             self.personaje_columna -= 1
             print("personaje,meta")   
+        elif (self.mapa[self.personaje_fila][self.personaje_columna] == 0 and self.mapa[self.personaje_fila][self.personaje_columna - 1]==7):
+            self.mapa[self.personaje_fila][self.personaje_columna]=1
+            self.mapa[self.personaje_fila][self.personaje_columna - 1]=8
+            self.personaje_columna -= 1
+            print("personaje,meta")   
         #19 personaje,caja,espacio
         elif(self.mapa[self.personaje_fila][self.personaje_columna]==0 and self.mapa[self.personaje_fila][self.personaje_columna -1]==2 and self.mapa [self.personaje_fila][self.personaje_columna -2]==1): 
           self.mapa[self.personaje_fila][self.personaje_columna]=1
@@ -237,6 +254,16 @@ class Sokoban:
         elif(self.mapa[self.personaje_fila][self.personaje_columna]== 0 and self.mapa[self.personaje_fila -1][self.personaje_columna ]== 4):
             self.mapa[self.personaje_fila -1][self.personaje_columna]= 1
             self.mapa[self.personaje_fila][self.personaje_columna]= 5
+            self.personaje_fila -= 1
+            print("meta,personaje") 
+        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 0 and self.mapa[self.personaje_fila -1][self.personaje_columna ]== 7):
+            self.mapa[self.personaje_fila -1][self.personaje_columna]= 1
+            self.mapa[self.personaje_fila][self.personaje_columna]= 8
+            self.personaje_fila -= 1
+            print("meta,personaje") 
+        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 0 and self.mapa[self.personaje_fila -1][self.personaje_columna ]== 9):
+            self.mapa[self.personaje_fila -1][self.personaje_columna]= 1
+            self.mapa[self.personaje_fila][self.personaje_columna]= 7
             self.personaje_fila -= 1
             print("meta,personaje") 
      #31 espacio,caja,personaje    
@@ -321,6 +348,12 @@ class Sokoban:
             self.mapa[self.personaje_fila +1][self.personaje_columna]= 5
             self.personaje_fila += 1
             print("personaje,meta")  
+      #42 personaje,meta
+        elif(self.mapa[self.personaje_fila][self.personaje_columna]== 0 and self.mapa[self.personaje_fila +1][self.personaje_columna ]== 7):
+            self.mapa[self.personaje_fila][self.personaje_columna]= 1
+            self.mapa[self.personaje_fila +1][self.personaje_columna]= 8
+            self.personaje_fila += 1
+            print("personaje,meta")  
       #43 personaje,caja,espacio
         elif(self.mapa[self.personaje_fila][self.personaje_columna]== 0 and self.mapa[self.personaje_fila +1][self.personaje_columna]==2  and self.mapa [self.personaje_fila +2][self.personaje_columna]== 1):
           self.mapa [self.personaje_fila][self.personaje_columna]=  1  
@@ -394,8 +427,8 @@ class Sokoban:
         print(instrucciones)
         lvl = 1
         while True:
-          print(f"\nNivel {lvl}")
           self.leerMapa(lvl)
+          print(f"\nNivel {lvl}")
           self.imprimirMapa()
           while True:
               movimiento = input("Mover Hacia: ")
@@ -413,6 +446,7 @@ class Sokoban:
               else: 
                 pass
               self.borrarS()
+              print(f"\nNivel {lvl}")
               fin = self.imprimirMapa()
               if fin:
                 print("Has completado el nivel!!!")
